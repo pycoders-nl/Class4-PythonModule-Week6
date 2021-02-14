@@ -1,0 +1,56 @@
+class Triangle():
+    def __init__(self,c,d,e):
+        self.c=int(c)
+        self.d=int(d)
+        self.e=int(e)
+    def perimeter(self):
+        return (self.c+self.d+self.e)
+    def area(self):
+        x=(self.c+self.d+self.e)/2
+        return (x*(x-self.c)*(x-self.d)*(x-self.e))**(0.5)
+class Rectangle():
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def perimeter(self):
+        return 2*(self.a+self.b)
+    def area(self):
+        return self.a*self.b
+class Square(Rectangle):
+    def __init__(self,a):
+        super().__init__(a,b)
+        self.a=a
+    def perimeter(self):
+        return 4*(self.a)
+    def area(self):
+        return (self.a)**2
+class Cube (Square):
+    def __init__(self,a):
+        super().__init__(a)
+    def surface_area(self):
+        return 6*(self.a**2)
+    def volume(self):
+        return (self.a)**3
+
+class Pyramid(Triangle, Square):
+    def __init__(self,a,c,e):
+        super().__init__(a,c,e)
+        self.a=a
+        self.c=c
+    def surface_area(self):
+        return (self.a*self.a+2*(((self.c**2-(self.a**2)*0.25)**0.5)*self.a)),  self.a, self.c
+    def volume(self):
+        return ((1/3)*(self.a**2)*( (self.c**2-(self.a**2)/2)**0.5 ) )
+ucgen=Triangle(3,4,5)
+ucgen.area ()
+dikd=Rectangle(6,8)
+print(dikd.area())
+print(dikd.perimeter())
+kare=Square(dikd.a)
+kare.area()
+kare.perimeter()
+kup=Cube(kare.a)
+kup.area()
+kup.volume()
+piramit=Pyramid(kare.a,ucgen.c,ucgen.e)
+piramit.surface_area()
