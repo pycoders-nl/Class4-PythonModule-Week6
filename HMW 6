@@ -18,7 +18,7 @@ class Rectangle():
         return self.a*self.b
 class Square(Rectangle):
     def __init__(self,a):
-        super().__init__(a,b)
+        super().__init__(a,a)
         self.a=a
     def perimeter(self):
         return 4*(self.a)
