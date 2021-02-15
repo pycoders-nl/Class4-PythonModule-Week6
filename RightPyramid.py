@@ -32,7 +32,7 @@ print ("dikdortgen cevre :",rectangle.perimeter())
 class Square(Rectangle):   # kare dikdortgenin alt sinifi, ozellikleri ondan aliyor
     def __init__(self, length):
         super().__init__(length, length) # kare kenar uzunluklari ayni oldugu icin, ust sinifta olan width, length olarak degistiyoruz
-
+                                         # boylece kara icin 2 ayri kenar bilgisi gerek kalmadi
     def area(self):
         return self.length * self.length
 
@@ -45,7 +45,7 @@ print ("kare cevre :", square.perimeter())
 
 class Cube(Square):  # kup'te karenin alt sinifi oluyor
 
-    def __init__(self, length):
+    def __init__(self, length):   #bunu hic yazmasak da olur,
         super().__init__(length)
 
     def surface_area(self):
@@ -75,16 +75,17 @@ triangle1 = Triangle(4,5)
 print ("ucgen alan :", triangle1.tri_area())
 print ("ucgen cevre :", triangle1.perimeter())
 
-class RightPyramid(Square, Triangle):   #karepiramit,
+class RightPyramid(Square, Triangle):   #karepiramit,   # boylece base, hem karenin kenar verisi oldu, hem de ucgenin tabani
     def __init__(self, base, tri_height, height):  #tri_height yan alandaki ucgen yuksekligi, slant_height diye bilinir
-        self.base = base
-        self.tri_height = tri_height  #tri_height, piramitin yuksekligi degil, yan yuzey ucgen yuksekligi
-        self.height= height            #height, piramitin dikey yuksekligi, hacim hesaplam icin gerekli
-        super().__init__(self.base)     #base, kara sinifindaki length olarak inherit ediliyor, yerine geciyor,
-                                        #yoksa hem ucgen hem de kare icin kenar verilerini ayri ayri girmemiz gerekecekti
+        super().__init__(length=base)  #kare sinifindaki length verisi icin base verisini kullanmasini istiyorum, onun yerine geciyor,
+                                        # boylece base, hem karenin kenar verisi oldu, hem de ucgenin tabani
+        self.base = base               # yoksa hem ucgen hem de kare icin kenar verileri icin ayri ayri veri girmemiz gerekiyor
+        self.tri_height = tri_height   #tri_height, piramitin yuksekligi degil, yan yuzey ucgen yuksekligi
+        self.height= height            #height, piramitin dikey yuksekligi, hacim hesaplama icin gerekli
+
     def area(self):
-        base_area = super().area()  #taban alani hesaplamayi kare ust sinifindan aliyor
-        triangle_area = super().tri_area()  #  yan alan hesaplamayi ucgen ust sinifindan aliyor
+        base_area = super().area()              #taban alani hesaplamayi kare ust sinifindan aliyor
+        triangle_area = super().tri_area()      #  yan alan hesaplamayi ucgen ust sinifindan aliyor
         return (triangle_area * 4 + base_area)  # tum alan
 
     def volume(self):
