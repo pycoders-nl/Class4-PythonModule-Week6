@@ -1,4 +1,3 @@
-# At the Square class you can check if the edges same or not
 
 class Triangle:
     def __init__(self, edge_1 = 1, edge_2 = 1 , edge_3 = 1):
