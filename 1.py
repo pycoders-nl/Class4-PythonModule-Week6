@@ -60,6 +60,3 @@ class Pyramid(Triangle,Square):
         return Triangle.calc_area(self) * 4 + Square.calc_area()
     
 #################################################
-
-a = Pyramid(5, 10 ,10 ,5)
-print(a.calc_volume())
