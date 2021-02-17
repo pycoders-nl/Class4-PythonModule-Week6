@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
+
 
 # Create a class named Triangle and Rectangle.
 # 
@@ -24,6 +23,12 @@
 # a, b ve c üçgenin kenar uzunlukları ve s üçgenin çevre uzunluğunun yarısı olmak üzere;
 # Alan = √(s(s-a)(s-b)(s-c))
 
+
+def star_triangle(n):
+    for i in range(n):
+        print(" "*(n-1-i), end="")
+        print("*"*((i*2)+1))
+star_triangle(28)
 
 
 class Triangle():
@@ -106,10 +111,3 @@ print('\t The volume of the cube is: {}' .format(cube1.volume()))
 
 pyramid1 = Pyramid(square1.d, triangle1.a, triangle1.c)
 print('\n\t The volume of the pyramid is: {}' .format(int(pyramid1.volume())))
-
-
-# In[ ]:
-
-
-
-
